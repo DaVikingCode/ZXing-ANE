@@ -1,0 +1,6 @@
+.project
+.settings
+*.ipa
+*.swf
+*.tmp
+bin/ZBarANE.app.dSYM/Contents/Info.plist

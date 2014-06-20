@@ -1,0 +1,30 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.5">
+	<id>com.davikingcode.nativeExtensions.ZBar</id>
+	<versionNumber>0.1</versionNumber>
+	<platforms>
+		<platform name="iPhone-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libZBarIosExtension.a</nativeLibrary>
+				<initializer>ZBarExtensionInitializer</initializer>
+				<finalizer>ZBarExtensionFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>ZBarAndroidExtension.jar</nativeLibrary>
+				<initializer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</initializer>
+				<finalizer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="Android-x86">
+			<applicationDeployment>
+				<nativeLibrary>ZBarAndroidExtension.jar</nativeLibrary>
+				<initializer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</initializer>
+				<finalizer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="default">
+			<applicationDeployment/>
+		</platform>
+	</platforms>
+</extension>
