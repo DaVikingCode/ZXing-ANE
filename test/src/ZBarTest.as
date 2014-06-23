@@ -1,5 +1,6 @@
 ﻿package {
 
+	import com.davikingcode.nativeExtensions.zbar.ZBarEvent;
 	import com.davikingcode.nativeExtensions.zbar.ZBar;
 
 	import flash.display.Sprite;
@@ -14,8 +15,18 @@
 		public function ZBarTest() {
 			
 			var zbar:ZBar = new ZBar();
+			zbar.addEventListener(ZBarEvent.FAIL, _zbarEvt);
+			zbar.addEventListener(ZBarEvent.SUCCESS, _zbarEvt);
+			
 			zbar.init(new qrCodeBitmap().bitmapData);
+		}
 
+		private function _zbarEvt(zbEvt:ZBarEvent):void {
+			
+			if (zbEvt.type == ZBarEvent.SUCCESS)
+				trace(zbEvt.url);
+			else
+				trace("fail");
 		}
 	}
 }

@@ -14,8 +14,6 @@
 
 DEFINE_ANE_FUNCTION(init) {
     
-    NSLog(@"ok");
-    
     FREBitmapData bitmapData;
     FREAcquireBitmapData(argv[0], &bitmapData);
     

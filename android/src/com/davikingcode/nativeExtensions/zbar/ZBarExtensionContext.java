@@ -17,7 +17,7 @@ public class ZBarExtensionContext extends FREContext
 	public Map<String, FREFunction> getFunctions()
 	{
 		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
-		//functionMap.put( "getAdScaleFactor", new MoPubGetAdScaleFactor() );
+		functionMap.put( "init", new ZBarInit() );
 		return functionMap;
 	}
 }

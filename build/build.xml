@@ -29,22 +29,23 @@
 			<classpath>
 				<pathelement location="${android.sdk}/android.jar" />
 				<pathelement location="../android/libs/FlashRuntimeExtensions.jar" />
+				<pathelement location="../android/libs/zxing-core-3.1.0.jar" />
 			</classpath>
 		</javac>
 
 		<mkdir dir="../android/temp/zip" />
-		<!--<copy todir="../android/temp/classes/com">
-			<fileset dir="../android/temp/zip/com" />
+		<copy todir="../android/temp/classes/com">
+			<fileset dir="../android/temp/zip" />
 		</copy>
 		<copy todir="../android/temp/classes/android">
-			<fileset dir="../android/temp/zip/android" />
-		</copy>-->
+			<fileset dir="../android/temp/zip" />
+		</copy>
 
 		<mkdir dir="../temp/android/" />
 		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar" />
-		<!--<copy todir="../temp/android/res">
-			<fileset dir="../android/temp/zip/res" />
-		</copy>-->
+		<copy todir="../temp/android/res">
+			<fileset dir="../android/temp/zip" />
+		</copy>
 
 		<delete dir="../android/temp" />
 	</target>
@@ -117,7 +118,7 @@
 			<arg line='-source-path ../actionscript/default/src' />
 			<arg line='-source-path+=../actionscript/common/src' />
 			<arg line='-output ../temp/default/${name}.swc' />
-			<arg line='-swf-version=13' />
+			<arg line='-swf-version=15' />
 			<arg line='-external-library-path+="${sdk.home}/frameworks/libs/air/airglobal.swc"' />
 			<arg line='-include-classes ${classlist.default}' />
 		</exec>

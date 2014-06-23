@@ -4,3 +4,4 @@
 *.swf
 *.tmp
 bin/ZBarANE.app.dSYM/Contents/Info.plist
+*.apk
