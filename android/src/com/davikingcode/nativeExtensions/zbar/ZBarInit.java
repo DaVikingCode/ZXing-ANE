@@ -7,7 +7,11 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREBitmapData;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
-//import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 
 public class ZBarInit implements FREFunction {
 
@@ -18,27 +22,36 @@ public class ZBarInit implements FREFunction {
 
 		try {
 
-			FREBitmapData bitmapData = (FREBitmapData) args[0];
+			FREBitmapData bitmapData = (FREBitmapData)args[0];
 
 			bitmapData.acquire();
 
+			int srcWidth = bitmapData.getWidth();
+			int srcHeight = bitmapData.getHeight();
+			
+
+			Bitmap imageBitmap = Bitmap.createBitmap(srcWidth, srcHeight, Bitmap.Config.ARGB_8888);
+
+			imageBitmap.copyPixelsFromBuffer(bitmapData.getBits());
+
 			bitmapData.release();
-			//bitmapData.getWidth();
 
-			//Bitmap imageBitmap = Bitmap.createBitmap(bitmapData.getWidth(), bitmapData.getHeight(), Bitmap.Config.ARGB_8888);
+			int[] pixels = new int[srcWidth * srcHeight];
+			imageBitmap.getPixels(pixels, 0, srcWidth, 0, 0, srcWidth, srcHeight);
 
-			/*int width = imageBitmap.getWidth();
-			int height = imageBitmap.getHeight();
-			int[] pixels = new int[width * height];
-			imageBitmap.getPixels(pixels, 0, width, 0, 0, width, height);*/
+			RGBLuminanceSource source = new RGBLuminanceSource(srcWidth, srcHeight, pixels);
 
-			//RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
+			BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+			Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap);
+    		//Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap, hintMap);
 
-			context.dispatchStatusEventAsync("FAIL", "");
+			context.dispatchStatusEventAsync("SUCCESS", qrCodeResult.getText());
+
+			//context.dispatchStatusEventAsync("FAIL", "");
 
 		} catch (Exception e) {
 
-			Log.w( "ZBarInit", e );
+			Log.w("ZBarInit", e);
 		}
 	
 		return null;
