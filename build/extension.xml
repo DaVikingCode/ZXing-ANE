@@ -1,26 +1,26 @@
 <extension xmlns="http://ns.adobe.com/air/extension/3.5">
-	<id>com.davikingcode.nativeExtensions.ZBar</id>
+	<id>com.davikingcode.nativeExtensions.ZXing</id>
 	<versionNumber>0.1</versionNumber>
 	<platforms>
 		<platform name="iPhone-ARM">
 			<applicationDeployment>
-				<nativeLibrary>libZBarIosExtension.a</nativeLibrary>
-				<initializer>ZBarExtensionInitializer</initializer>
-				<finalizer>ZBarExtensionFinalizer</finalizer>
+				<nativeLibrary>libZXingIosExtension.a</nativeLibrary>
+				<initializer>ZXingExtensionInitializer</initializer>
+				<finalizer>ZXingExtensionFinalizer</finalizer>
 			</applicationDeployment>
 		</platform>
 		<platform name="Android-ARM">
 			<applicationDeployment>
-				<nativeLibrary>ZBarAndroidExtension.jar</nativeLibrary>
-				<initializer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</initializer>
-				<finalizer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</finalizer>
+				<nativeLibrary>ZXingAndroidExtension.jar</nativeLibrary>
+				<initializer>com.davikingcode.nativeExtensions.zxing.ZXingExtension</initializer>
+				<finalizer>com.davikingcode.nativeExtensions.zxing.ZXingExtension</finalizer>
 			</applicationDeployment>
 		</platform>
 		<platform name="Android-x86">
 			<applicationDeployment>
-				<nativeLibrary>ZBarAndroidExtension.jar</nativeLibrary>
-				<initializer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</initializer>
-				<finalizer>com.davikingcode.nativeExtensions.zbar.ZBarExtension</finalizer>
+				<nativeLibrary>ZXingAndroidExtension.jar</nativeLibrary>
+				<initializer>com.davikingcode.nativeExtensions.zxing.ZXingExtension</initializer>
+				<finalizer>com.davikingcode.nativeExtensions.zxing.ZXingExtension</finalizer>
 			</applicationDeployment>
 		</platform>
 		<platform name="default">

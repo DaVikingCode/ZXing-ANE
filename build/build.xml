@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Air Native Extension ZBar Build Scripts" default="all">
+<project name="Air Native Extension ZXing Build Scripts" default="all">
 
 	<property file="build.config" />
 
