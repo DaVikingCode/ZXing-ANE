@@ -3,5 +3,5 @@
 *.ipa
 *.swf
 *.tmp
-bin/ZBarANE.app.dSYM/Contents/Info.plist
 *.apk
+bin/ZXingANE.app.dSYM/Contents/Info.plist

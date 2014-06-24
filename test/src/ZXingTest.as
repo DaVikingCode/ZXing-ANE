@@ -1,13 +1,13 @@
 ﻿package {
 
-	import com.davikingcode.nativeExtensions.zbar.ZXingEvent;
-	import com.davikingcode.nativeExtensions.zbar.ZXing;
+	import com.davikingcode.nativeExtensions.zxing.ZXing;
+	import com.davikingcode.nativeExtensions.zxing.ZXingEvent;
 
 	import flash.display.Sprite;
 
 	[SWF(width='320', height='480', frameRate='30', backgroundColor='#000000')]
 
-	public class ZBarTest extends Sprite {
+	public class ZXingTest extends Sprite {
 		
 		[Embed(source="/../../embed/qrcode.jpg")]
 		private const qrCodeBitmap:Class;
@@ -18,7 +18,7 @@
 			zxing.addEventListener(ZXingEvent.FAIL, _zxingEvt);
 			zxing.addEventListener(ZXingEvent.SUCCESS, _zxingEvt);
 			
-			zxing.init(new qrCodeBitmap().bitmapData);
+			zxing.decodeFromBitmapData(new qrCodeBitmap().bitmapData);
 		}
 
 		private function _zxingEvt(zxEvt:ZXingEvent):void {

@@ -233,5 +233,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
   </manifest>]]></manifestAdditions>
   </android>
+  <extensions>
+    <extensionID>com.davikingcode.nativeExtensions.ZXing</extensionID>
+  </extensions>
 </application>
 

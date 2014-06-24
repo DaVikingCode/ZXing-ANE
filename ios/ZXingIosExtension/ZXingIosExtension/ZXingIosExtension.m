@@ -1,6 +1,6 @@
 //
-//  ZBarIosExtension.m
-//  ZBarIosExtension
+//  ZXingIosExtension.m
+//  ZXingIosExtension
 //
 //  Created by Aymeric Lamboley on 20/06/2014.
 //  Copyright (c) 2014 DaVikingCode. All rights reserved.
@@ -12,7 +12,7 @@
 #define DEFINE_ANE_FUNCTION(fn) FREObject (fn)(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 #define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
 
-DEFINE_ANE_FUNCTION(init) {
+DEFINE_ANE_FUNCTION(decodeFromBitmapData) {
     
     FREBitmapData bitmapData;
     FREAcquireBitmapData(argv[0], &bitmapData);
@@ -95,10 +95,10 @@ DEFINE_ANE_FUNCTION(init) {
     return NULL;
 }
 
-void ZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
+void ZXingContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     
     static FRENamedFunction functionMap[] = {
-        MAP_FUNCTION(init, NULL )
+        MAP_FUNCTION(decodeFromBitmapData, NULL )
     };
     
     *numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );
@@ -106,17 +106,17 @@ void ZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ct
     
 }
 
-void ZBarContextFinalizer(FREContext ctx) {
+void ZXingContextFinalizer(FREContext ctx) {
     return;
 }
 
-void ZBarExtensionInitializer( void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet ) {
+void ZXingExtensionInitializer( void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet ) {
     
     extDataToSet = NULL; // This example does not use any extension data.
-    *ctxInitializerToSet = &ZBarContextInitializer;
-    *ctxFinalizerToSet = &ZBarContextFinalizer;
+    *ctxInitializerToSet = &ZXingContextInitializer;
+    *ctxFinalizerToSet = &ZXingContextFinalizer;
 }
 
-void ZBarExtensionFinalizer() {
+void ZXingExtensionFinalizer() {
     return;
 }

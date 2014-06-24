@@ -17,7 +17,7 @@ public class ZXingExtensionContext extends FREContext
 	public Map<String, FREFunction> getFunctions()
 	{
 		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
-		functionMap.put( "init", new ZXingInit() );
+		functionMap.put( "decodeFromBitmapData", new ZXingDecodeFromBitmapData() );
 		return functionMap;
 	}
 }

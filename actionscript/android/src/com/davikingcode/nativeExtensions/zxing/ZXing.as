@@ -42,8 +42,8 @@ package com.davikingcode.nativeExtensions.zxing {
 
 		}
 
-		public function init(bmp:BitmapData):void {
-			extensionContext.call("init", bmp);
+		public function decodeFromBitmapData(bmp:BitmapData):void {
+			extensionContext.call("decodeFromBitmapData", bmp);
 		}
 
 	}

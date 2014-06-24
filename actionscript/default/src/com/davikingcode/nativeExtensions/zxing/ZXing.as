@@ -16,7 +16,7 @@ package com.davikingcode.nativeExtensions.zxing {
 			_instance = this;
 		}
 
-		public function init(bmp:BitmapData):void {
+		public function decodeFromBitmapData(bmp:BitmapData):void {
 		}
 
 	}

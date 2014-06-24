@@ -13,7 +13,7 @@ import com.google.zxing.Result;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-public class ZXingInit implements FREFunction {
+public class ZXingDecodeFromBitmapData implements FREFunction {
 
 	@Override
 	public FREObject call( FREContext context, FREObject[] args ) {
@@ -26,7 +26,6 @@ public class ZXingInit implements FREFunction {
 
 			int srcWidth = bitmapData.getWidth();
 			int srcHeight = bitmapData.getHeight();
-			
 
 			Bitmap imageBitmap = Bitmap.createBitmap(srcWidth, srcHeight, Bitmap.Config.ARGB_8888);
 
@@ -52,12 +51,12 @@ public class ZXingInit implements FREFunction {
 
 				context.dispatchStatusEventAsync("FAIL", "");
 
-				Log.w("ZXingInit", e);
+				Log.w("ZXingDecodeFromBitmapData", e);
 			}
 
 		} catch (Exception e) {
 
-			Log.w("ZXingInit", e);
+			Log.w("ZXingDecodeFromBitmapData", e);
 		}
 	
 		return null;
