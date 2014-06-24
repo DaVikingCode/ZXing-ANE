@@ -29,25 +29,16 @@
 			<classpath>
 				<pathelement location="${android.sdk}/android.jar" />
 				<pathelement location="../android/libs/FlashRuntimeExtensions.jar" />
-				<pathelement location="../android/libs/zxing-core-3.1.0.jar" />
+				<pathelement location="../android/libs/zxing-core-2.3.0.jar" />
 			</classpath>
 		</javac>
 
 		<mkdir dir="../android/temp/zip" />
-		<unzip src="../android/libs/zxing-core-3.1.0.jar" dest="../android/temp/zip"/>
-		<copy todir="../android/temp/classes/com">
-			<fileset dir="../android/temp/zip" />
-		</copy>
-		<copy todir="../android/temp/classes/android">
-			<fileset dir="../android/temp/zip" />
-		</copy>
+		<unzip src="../android/libs/zxing-core-2.3.0.jar" dest="../android/temp/zip"/>
+		<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
 
 		<mkdir dir="../temp/android/" />
 		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar" />
-		<copy todir="../temp/android/res">
-			<fileset dir="../android/temp/zip" />
-		</copy>
-
 		<delete dir="../android/temp" />
 	</target>
 
