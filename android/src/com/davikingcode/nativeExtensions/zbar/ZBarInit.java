@@ -18,8 +18,6 @@ public class ZBarInit implements FREFunction {
 	@Override
 	public FREObject call( FREContext context, FREObject[] args ) {
 
-		//http://stackoverflow.com/questions/17314467/bitmap-channels-order-different-in-android
-
 		try {
 
 			FREBitmapData bitmapData = (FREBitmapData)args[0];
@@ -42,12 +40,20 @@ public class ZBarInit implements FREFunction {
 			RGBLuminanceSource source = new RGBLuminanceSource(srcWidth, srcHeight, pixels);
 
 			BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
-			Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap);
-    		//Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap, hintMap);
 
-			context.dispatchStatusEventAsync("SUCCESS", qrCodeResult.getText());
+			try {
 
-			//context.dispatchStatusEventAsync("FAIL", "");
+				Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap);
+
+				context.dispatchStatusEventAsync("SUCCESS", qrCodeResult.getText());
+
+
+			} catch (Exception e) {
+
+				context.dispatchStatusEventAsync("FAIL", "");
+
+				Log.w("ZBarInit", e);
+			}
 
 		} catch (Exception e) {
 
