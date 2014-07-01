@@ -32,11 +32,11 @@ package com.davikingcode.nativeExtensions.zxing {
 			switch (sEvt.code) {
 
 				case ZXingEvent.SUCCESS:
-					dispatchEvent(new ZXingEvent(ZXingEvent.SUCCESS, sEvt.level));	
+					dispatchEvent(new ZXingEvent(ZXingEvent.SUCCESS, sEvt.level));
 					break;
 
 				case ZXingEvent.FAIL:
-					dispatchEvent(new ZXingEvent(ZXingEvent.FAIL));	
+					dispatchEvent(new ZXingEvent(ZXingEvent.FAIL));
 					break;
 			}
 

@@ -11,6 +11,9 @@
 		
 		[Embed(source="/../../embed/qrcode.jpg")]
 		private const qrCodeBitmap:Class;
+		
+		[Embed(source="/../../embed/logo.jpg")]
+		private const logoBitmap:Class;
 
 		public function ZXingTest() {
 			
@@ -19,6 +22,7 @@
 			zxing.addEventListener(ZXingEvent.SUCCESS, _zxingEvt);
 			
 			zxing.decodeFromBitmapData(new qrCodeBitmap().bitmapData);
+			zxing.decodeFromBitmapData(new logoBitmap().bitmapData);
 		}
 
 		private function _zxingEvt(zxEvt:ZXingEvent):void {
